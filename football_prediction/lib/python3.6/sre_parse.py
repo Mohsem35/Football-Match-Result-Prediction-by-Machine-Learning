@@ -1,0 +1,5 @@
+XSym
+0098
+6b2ab1bf039f14f70b1c607d4edecd86
+/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/lib/python3.6/sre_parse.py
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

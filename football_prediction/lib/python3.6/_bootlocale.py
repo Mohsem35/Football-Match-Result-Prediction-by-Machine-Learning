@@ -1,0 +1,5 @@
+XSym
+0100
+4e88e20b743a2628cd7a723f0442a66d
+/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/lib/python3.6/_bootlocale.py
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

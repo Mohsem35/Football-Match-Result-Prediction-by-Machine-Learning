@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Football Prediciton</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+#data{
+margin-left:10%;
+margin-top: 25%;
+
+}
+/* Center the loader */
+#loader {
+position: absolute;
+left: 50%;
+top: 50%;
+z-index: 1;
+width: 150px;
+height: 150px;
+margin: -75px 50 0 -75px;
+border: 16px solid #f3f3f3;
+border-radius: 50%;
+border-top: 16px solid #3498db;
+width: 120px;
+height: 120px;
+-webkit-animation: spin 2s linear infinite;
+animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+position: relative;
+-webkit-animation-name: animatebottom;
+-webkit-animation-duration: 1s;
+animation-name: animatebottom;
+animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+from { bottom:-100px; opacity:0 } 
+to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+from{ bottom:-100px; opacity:0 } 
+to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+display: none;
+text-align: center;
+}
+
+
+.btn {
+background-color: #4169E1;
+border: none;
+color: white;
+padding: 20px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+}
+#bodyItem {
+position: absolute;
+width: 100px;
+height: 100px;
+z-index: 15;
+top: 25%;
+left: 20%;
+margin: -100px 0 0 -150px;
+}
+#team_member{
+color: white;
+font-sizee: 50px;
+}
+
+body{
+background-image:url({{ url_for('static', filename='football.png') }});	
+background-repeat: no-repeat;
+background-size: cover;
+color:"white";
+}
+
+#team{
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+color: brown;
+background-image:url("tvguide-glasspane.png");
+}
+</style>
+
+<body>
+<div style="vertical-align: top; height:50px; background-color:black;color:white"><h2 style="padding:10px;">Football Match Outcome Prediction</h2></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<h1 id="data" style="color:white;">Probable Winner Team is : {{text}}</h1>
+<h2 id="gu1" style="color:white;">{{blehh}}</h2>
+<h2 id="gu2"></h2>
+<h2>Optimal Squad</h2>
+<div id="team" style="width:48%; float:left;">
+<h3 id="team_member" style="color:black;"> Home Team Players </h3>
+<h5>{{home1}}</h5>
+<h5>{{home2}}</h5>
+<h5>{{home3}}</h5>
+<h5>{{home4}}</h5>
+<h5>{{home5}}</h5>
+<h5>{{home6}}</h5>
+<h5>{{home7}}</h5>
+<h5>{{home8}}</h5>
+<h5>{{home9}}</h5>
+<h5>{{home10}}</h5>
+<h5>{{home11}}</h5>
+</div>
+<div id="team" style="width:48%; float:right">
+<h3 id="team_memberr" style="color:black"> Away Team Players </h3>
+<h5>{{away1}}</h5>
+<h5>{{away2}}</h5>
+<h5>{{away3}}</h5>
+<h5>{{away4}}</h5>
+<h5>{{away5}}</h5>
+<h5>{{away6}}</h5>
+<h5>{{away7}}</h5>
+<h5>{{away8}}</h5>
+<h5>{{away9}}</h5>
+<h5>{{away10}}</h5>
+<h5>{{away11}}</h5>
+</div>
+<a href="/results" id="link" hidden style="font-size:25px;">Click here for more info</a>
+</div>
+<form action='/' method='post'>
+<div id="bodyItem">
+<div class="container">
+    <h2 align="center" style="color:white;">Select HomeTeam and AwayTeam in the checklist</h2>
+      <div class="form-group">
+        <label for="sel1">Select HomeTeam (select one):</label>
+        <select class="form-control" id="sel1" name="sel1">
+          <option>Charlton</option>
+          <option>Chelsea</option>
+          <option>Coventry</option>
+          <option>Derby</option>
+          <option>Leeds</option>
+          <option>Leicester</option>
+          <option>Liverpool</option>
+          <option>Sunderland</option>
+          <option>Tottenham</option>
+          <option>Man United</option>
+          <option>Arsenal</option>
+          <option>Bradford</option>
+          <option>Ipswich</option>
+          <option>Middlesbrough</option>
+          <option>Everton</option>
+          <option>Man City</option>
+          <option>Newcastle</option>
+          <option>Southampton</option>
+          <option>West Ham</option>
+          <option>Aston Villa</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="sel2">Select AwayTeam (select one):</label>
+        <select class="form-control" id="sel2" name="sel2">
+            <option>Charlton</option>
+            <option>Chelsea</option>
+            <option>Coventry</option>
+            <option>Derby</option>
+            <option>Leeds</option>
+            <option>Leicester</option>
+            <option>Liverpool</option>
+            <option>Sunderland</option>
+            <option>Tottenham</option>
+            <option>Man United</option>
+            <option>Arsenal</option>
+            <option>Bradford</option>
+            <option>Ipswich</option>
+            <option>Middlesbrough</option>
+            <option>Everton</option>
+            <option>Man City</option>
+            <option>Newcastle</option>
+            <option>Southampton</option>
+            <option>West Ham</option>
+            <option>Aston Villa</option>
+        </select>
+      </div>
+
+  </div>
+<input type="Submit" value='Submit' name='submit' class="btn"><br>
+
+</div>
+</form>
+<div id="loader" style="display:none;" ></div>
+<h1 id="result" style="display:none;">{{ text }}</h1>
+<p id="hamprob" style="display: none; font-family:monospace; color:rgb(21, 235, 21)">hello hello</p>
+
+<script>
+var myVar;
+(function () {
+var ares= document.getElementById("result").textContent;
+if(ares!="")
+changeColor();
+
+})();
+
+function showPage() {
+
+document.getElementById("loader").style.display = "none";
+document.getElementById("myDiv").style.display = "block";
+
+var res= document.getElementById("result").textContent;
+var ress= document.getElementById("hamprob").textContent;
+var resss= document.getElementById("spamprob").textContent;
+
+document.getElementById("gu1").style.color="green";
+document.getElementById("gu2").style.color="red";
+document.getElementById("link").hidden=false;
+
+document.getElementById("data").innerHTML =  res ;
+document.getElementById("gu1").innerHTML =  ress ;
+document.getElementById("gu2").innerHTML =  resss ;
+
+}
+
+
+function changeColor(){
+document.getElementById("loader").style.display = "block";
+
+// if(data=='true'){
+// document.getElementById("data").style.color = "green";
+// document.getElementById("data").innerHTML = "Success! Secure site.";
+// }
+// else{
+// document.getElementById("data").style.color = "red";
+
+//}
+myVar = setTimeout(showPage, 5000);
+};
+</script>
+</html>
+

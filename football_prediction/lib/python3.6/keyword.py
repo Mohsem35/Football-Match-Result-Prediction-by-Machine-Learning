@@ -1,0 +1,5 @@
+XSym
+0096
+284d96c67708036ca562b5edfbf11a53
+/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/lib/python3.6/keyword.py
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
